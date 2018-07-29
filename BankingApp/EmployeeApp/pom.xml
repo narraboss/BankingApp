@@ -3,7 +3,6 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>com.employee</groupId>
 	<artifactId>EmployeeApp</artifactId>
 	<packaging>jar</packaging>
 
@@ -14,7 +13,7 @@
 		<groupId>com.bankingApp</groupId>
 		<artifactId>BankingApp</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
-		<relativePath>../BankingApp</relativePath> <!-- lookup parent from repository -->
+		<!-- <relativePath/> lookup parent from repository -->
 	</parent>
 
 	<properties>
