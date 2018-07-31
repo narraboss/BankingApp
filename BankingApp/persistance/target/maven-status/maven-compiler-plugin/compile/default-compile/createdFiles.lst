@@ -1,0 +1,5 @@
+org/persistance/domain/Customer.class
+org/persistance/domain/User.class
+org/persistance/domain/Auditable.class
+org/persistance/App.class
+org/persistance/domain/Employee.class
