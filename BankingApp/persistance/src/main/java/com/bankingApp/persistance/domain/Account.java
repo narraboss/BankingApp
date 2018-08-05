@@ -3,14 +3,94 @@
  */
 package com.bankingApp.persistance.domain;
 
+import java.io.Serializable;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EntityListeners;
+import javax.persistence.Id;
+
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+
+import lombok.Data;
+
 /**
  * @author vijayendrakantipudi
  *
  */
-public class Account extends Auditable{
+@EntityListeners(AuditingEntityListener.class)
+@Entity(name = "account_details")
+@Data
+public class Account extends Auditable implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -5844474580749849748L;
+
+	@Id
+	@Column(name = "account_number")
 	private String accNumber;
+	
+	@Column(name = "account_balance")
 	private String balance;
+	
+	@Column(name = "user_id")
 	private String userId;
+
+	
+	/**
+	 * @return the accNumber
+	 */
+	public String getAccNumber() {
+		return accNumber;
+	}
+
+
+	/**
+	 * @param accNumber the accNumber to set
+	 */
+	public void setAccNumber(String accNumber) {
+		this.accNumber = accNumber;
+	}
+
+
+	/**
+	 * @return the balance
+	 */
+	public String getBalance() {
+		return balance;
+	}
+
+
+	/**
+	 * @param balance the balance to set
+	 */
+	public void setBalance(String balance) {
+		this.balance = balance;
+	}
+
+
+	/**
+	 * @return the userId
+	 */
+	public String getUserId() {
+		return userId;
+	}
+
+
+	/**
+	 * @param userId the userId to set
+	 */
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "Account [accNumber=" + accNumber + ", balance=" + balance + ", userId=" + userId + "]";
+	}
 
 }
