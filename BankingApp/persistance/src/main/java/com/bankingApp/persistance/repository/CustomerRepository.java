@@ -14,5 +14,9 @@ import com.bankingApp.persistance.domain.Customer;
  */
 @Repository
 public interface CustomerRepository extends JpaRepository<Customer, Long> {
-
+	
+	public Customer findByCustomerId(String customerId);
+	
+	public Customer deleteByCustomerId(String customerId);
+	
 }
