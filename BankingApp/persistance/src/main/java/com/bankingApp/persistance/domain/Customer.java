@@ -25,6 +25,7 @@ import lombok.Data;
 @Entity(name = "customer_details")
 @Data
 public class Customer extends Auditable implements Serializable {
+	
 	/**
 	 * 
 	 */
@@ -46,7 +47,79 @@ public class Customer extends Auditable implements Serializable {
 
 	@Column(name = "mobilr_num")
 	private long mobNum;
+
 	
+	/**
+	 * @return the customerId
+	 */
+	public String getCustomerId() {
+		return customerId;
+	}
+
+	/**
+	 * @param customerId the customerId to set
+	 */
+	public void setCustomerId(String customerId) {
+		this.customerId = customerId;
+	}
+
+	/**
+	 * @return the firstName
+	 */
+	public String getFirstName() {
+		return firstName;
+	}
+
+	/**
+	 * @param firstName the firstName to set
+	 */
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	/**
+	 * @return the lastName
+	 */
+	public String getLastName() {
+		return lastName;
+	}
+
+	/**
+	 * @param lastName the lastName to set
+	 */
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
+	/**
+	 * @return the ssn
+	 */
+	public long getSsn() {
+		return ssn;
+	}
+
+	/**
+	 * @param ssn the ssn to set
+	 */
+	public void setSsn(long ssn) {
+		this.ssn = ssn;
+	}
+
+	/**
+	 * @return the mobNum
+	 */
+	public long getMobNum() {
+		return mobNum;
+	}
+
+	/**
+	 * @param mobNum the mobNum to set
+	 */
+	public void setMobNum(long mobNum) {
+		this.mobNum = mobNum;
+	}
+
+		
 	/* (non-Javadoc)
 	 * @see java.lang.Object#toString()
 	 */
