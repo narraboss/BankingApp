@@ -97,5 +97,4 @@ public class CustomerController {
 			@RequestHeader(value = "userId", required = true) String userId) {
 		return customerService.deleteCustomerByCustomerId(customerId);
 	}
-
 }
