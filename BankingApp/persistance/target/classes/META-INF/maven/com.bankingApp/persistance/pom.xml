@@ -22,5 +22,15 @@
       <version>3.8.1</version>
       <scope>test</scope>
     </dependency>
+    <dependency>
+			<groupId>com.bankingApp</groupId>
+  			<artifactId>CustomersApp</artifactId>
+  			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+		<groupId>com.bankingApp</groupId>
+  			<artifactId>EmployeeApp</artifactId>
+  			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
   </dependencies>
 </project>

@@ -23,7 +23,6 @@ import lombok.Data;
 @Data
 public class Employee extends Auditable implements Serializable{
 	
-	
 	/**
 	 * 
 	 */
@@ -45,6 +44,76 @@ public class Employee extends Auditable implements Serializable{
 
 	@Column(name = "mobilr_num")
 	private long mobNum;
+	
+	/**
+	 * @return the employeeId
+	 */
+	public String getEmployeeId() {
+		return employeeId;
+	}
+
+	/**
+	 * @param employeeId the employeeId to set
+	 */
+	public void setEmployeeId(String employeeId) {
+		this.employeeId = employeeId;
+	}
+
+	/**
+	 * @return the firstName
+	 */
+	public String getFirstName() {
+		return firstName;
+	}
+
+	/**
+	 * @param firstName the firstName to set
+	 */
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	/**
+	 * @return the lastName
+	 */
+	public String getLastName() {
+		return lastName;
+	}
+
+	/**
+	 * @param lastName the lastName to set
+	 */
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
+	/**
+	 * @return the ssn
+	 */
+	public long getSsn() {
+		return ssn;
+	}
+
+	/**
+	 * @param ssn the ssn to set
+	 */
+	public void setSsn(long ssn) {
+		this.ssn = ssn;
+	}
+
+	/**
+	 * @return the mobNum
+	 */
+	public long getMobNum() {
+		return mobNum;
+	}
+
+	/**
+	 * @param mobNum the mobNum to set
+	 */
+	public void setMobNum(long mobNum) {
+		this.mobNum = mobNum;
+	}
 
 	/**
 	 * @return the userId
