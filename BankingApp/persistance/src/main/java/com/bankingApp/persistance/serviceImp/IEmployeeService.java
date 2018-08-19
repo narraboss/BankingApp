@@ -1,8 +1,8 @@
 /**
  * 
  */
-package com.bankingApp.employee.service;
 
+package com.bankingApp.persistance.serviceImp;
 import java.util.List;
 
 import com.bankingApp.persistance.domain.Employee;

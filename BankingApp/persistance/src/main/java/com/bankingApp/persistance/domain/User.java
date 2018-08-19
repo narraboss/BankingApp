@@ -21,7 +21,7 @@ import lombok.Data;
  *
  */
 @EntityListeners(AuditingEntityListener.class)
-@Entity(name = "user")
+@Entity(name = "user_details")
 @Data
 public class User extends Auditable implements Serializable {
 	
