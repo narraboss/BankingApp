@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.bankingApp.customer.controller;
+package com.bankingApp.employee.controller;
 
 import java.util.List;
 
@@ -15,13 +15,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.bankingApp.customer.service.ICustomerService;
-import com.bankingApp.persistance.domain.Customer;
+import com.bankingApp.employee.service.IEmployeeService;
+import com.bankingApp.persistance.domain.Employee;
 import com.wordnik.swagger.annotations.Api;
 import com.wordnik.swagger.annotations.ApiOperation;
 import com.wordnik.swagger.annotations.ApiResponse;
 import com.wordnik.swagger.annotations.ApiResponses;
-
 
 /**
  * @author vijayendrakantipudi
@@ -29,72 +28,71 @@ import com.wordnik.swagger.annotations.ApiResponses;
  */
 
 @RestController
-@RequestMapping("/customerDetails")
-@Api(value = "customerController", description = "cntroller to save and get customer details")
-public class CustomerController {
+@RequestMapping("/employeeDetails")
+@Api(value = "employeeController", description = "cntroller to save and get employee details")
+public class EmployeeController {
 	
 	@Autowired
-	ICustomerService customerService;
-	
-	@ApiOperation(value = "Saves Consumer Details", nickname = "SaveCustomer", consumes = "application/json")
+	IEmployeeService employeeService;
+
+	@ApiOperation(value = "Save Employee Details", nickname = "SaveEmployee", consumes = "application/json")
 	@ApiResponses(value = { @ApiResponse(code = 200, message = "Success", response = String.class),
 	                        @ApiResponse(code = 401, message = "Unauthorized"), @ApiResponse(code = 403, message = "Forbidden"),
 	                        @ApiResponse(code = 404, message = "Not Found"), @ApiResponse(code = 500, message = "Failure")})
-	@RequestMapping(method = RequestMethod.POST, path = "/bankingApp/v1/saveCustomer", consumes = {"applicatio/json"})
-	@ResponseStatus(code = HttpStatus.OK)
-	public String saveCustomerDetails(@RequestBody Customer customer, 
-			@RequestHeader(value = "userId", required = true) String userId) throws Exception{
-		return customerService.saveCustomerDetails(customer, userId);
-	}
-	
-	@ApiOperation(value = "Get Consumer Details", nickname = "GetCustomer", produces = "application/json")
-	@ApiResponses(value = { @ApiResponse(code = 200, message = "Success", response = String.class),
-	                        @ApiResponse(code = 401, message = "Unauthorized"), @ApiResponse(code = 403, message = "Forbidden"),
-	                        @ApiResponse(code = 404, message = "Not Found"), @ApiResponse(code = 500, message = "Failure")})
-	@RequestMapping(method = RequestMethod.GET, path = "/bankingApp/v1/getAllCustomer", produces = {"applicatio/json"})
-	@ResponseStatus(code = HttpStatus.OK)
-	public List<Customer> getAllCustomerDetails(@RequestHeader(value = "userId", required = true) String userId) throws Exception{
-		return customerService.getAllCustomerDetails();
-	}
-	
-	@ApiOperation(value = "Get Consumer Details by CustomerId", nickname = "getByCustId", produces = "application/json")
-	@ApiResponses(value = { @ApiResponse(code = 200, message = "Success", response = String.class),
-	                        @ApiResponse(code = 401, message = "Unauthorized"), @ApiResponse(code = 403, message = "Forbidden"),
-	                        @ApiResponse(code = 404, message = "Not Found"), @ApiResponse(code = 500, message = "Failure")})
-	@RequestMapping(method = RequestMethod.GET, path = "/bankingApp/v1/getCustByCustId/{custId}", produces = {"application/json"})
-	@ResponseStatus(code = HttpStatus.OK)
-	public Customer getCustomerByCustomerId(@PathVariable String customerId, 
-					@RequestHeader(value = "userId", required = true) String userId) throws Exception {
-		return customerService.getCustomerByCustomerId(customerId);
-	}
-	
-	@ApiOperation(value = "Update Consumer Details by CustomerId", nickname = "UpdateCustomer", consumes = "application/json")
-	@ApiResponses(value = { @ApiResponse(code = 200, message = "Success", response = String.class),
-	                        @ApiResponse(code = 401, message = "Unauthorized"), @ApiResponse(code = 403, message = "Forbidden"),
-	                        @ApiResponse(code = 404, message = "Not Found"), @ApiResponse(code = 500, message = "Failure")})
-	@RequestMapping(method = RequestMethod.PUT, path = "/bankingApp/v1/updateCustomer/{custId}", consumes = {"application/json"})
-	@ResponseStatus(code = HttpStatus.OK)
-	public String updateCustomerByCustomerId(@RequestBody Customer customer, @PathVariable String customerId,
+	@RequestMapping(method = RequestMethod.POST, path = "/bankingApp/v1/saveEmployee", consumes = "application/json")
+	public String saveEmployeeDetails(@RequestBody Employee employee, 
 			@RequestHeader(value = "userId", required = true) String userId) throws Exception {
-		return customerService.updateCustomerBycustomerId(customer, customerId);
-	}
+		return employeeService.saveEmployeeDetails(employee);
+	} 
 	
-	@ApiOperation(value = "Delete All Consumer Details", nickname = "DeleteCustomer")
+	@ApiOperation(value = "Get Employee Details", nickname = "GetEmployee", produces = "application/json")
 	@ApiResponses(value = { @ApiResponse(code = 200, message = "Success", response = String.class),
 	                        @ApiResponse(code = 401, message = "Unauthorized"), @ApiResponse(code = 403, message = "Forbidden"),
 	                        @ApiResponse(code = 404, message = "Not Found"), @ApiResponse(code = 500, message = "Failure")})
-	@RequestMapping(method = RequestMethod.DELETE, path = "/bankingApp/v1/deleteAllCustomers")
-	public String deleteAllCustomerDetails(@RequestHeader(value = "userId", required = true) String userId) {
-		return customerService.deleteAllCustomerDetails();
+	@RequestMapping(method = RequestMethod.GET, path = "/bankingApp/v1/getAllEmployee", produces = {"applicatio/json"})
+	@ResponseStatus(code = HttpStatus.OK)
+	public List<Employee> getAllEmployeeDetails(@RequestHeader(value = "userId", required = true) String userId) throws Exception{
+		return employeeService.getAllEmployeeDetails();
 	}
 	
-	@ApiOperation(value = "Delete Consumer Details By CustomerId", nickname = "DeleteByCusId")
+	@ApiOperation(value = "Get Employee Details by EmployeeId", nickname = "getByEmplId", produces = "application/json")
 	@ApiResponses(value = { @ApiResponse(code = 200, message = "Success", response = String.class),
 	                        @ApiResponse(code = 401, message = "Unauthorized"), @ApiResponse(code = 403, message = "Forbidden"),
 	                        @ApiResponse(code = 404, message = "Not Found"), @ApiResponse(code = 500, message = "Failure")})
-	@RequestMapping(method = RequestMethod.DELETE, path = "/bankingApp/v1/deleteByCustomerId")
-	public String deleteCustomerByCustomerId(@PathVariable String customerId,
+	@RequestMapping(method = RequestMethod.GET, path = "/bankingApp/v1/getEmpByEmpId/{empId}", produces = {"application/json"})
+	@ResponseStatus(code = HttpStatus.OK)
+	public Employee getEmployeeByEmployeeId(@PathVariable String employeeId, 
+					@RequestHeader(value = "userId", required = true) String userId) throws Exception {
+		return employeeService.getEmployeeByEmployeeId(employeeId);
+	}
+	
+	@ApiOperation(value = "Update Employee Details by EmployeeId", nickname = "UpdateEmployee", consumes = "application/json")
+	@ApiResponses(value = { @ApiResponse(code = 200, message = "Success", response = String.class),
+	                        @ApiResponse(code = 401, message = "Unauthorized"), @ApiResponse(code = 403, message = "Forbidden"),
+	                        @ApiResponse(code = 404, message = "Not Found"), @ApiResponse(code = 500, message = "Failure")})
+	@RequestMapping(method = RequestMethod.PUT, path = "/bankingApp/v1/updateEmployee/{empId}", consumes = {"application/json"})
+	@ResponseStatus(code = HttpStatus.OK)
+	public String updateEmployeeByEmployeeId(@RequestBody Employee employee, @PathVariable String employeeId,
+			@RequestHeader(value = "userId", required = true) String userId) throws Exception {
+		return employeeService.updateEmployeeByEmployeeId(employee, employeeId);
+	}
+	
+	@ApiOperation(value = "Delete All Employee Details", nickname = "DeleteEmployee")
+	@ApiResponses(value = { @ApiResponse(code = 200, message = "Success", response = String.class),
+	                        @ApiResponse(code = 401, message = "Unauthorized"), @ApiResponse(code = 403, message = "Forbidden"),
+	                        @ApiResponse(code = 404, message = "Not Found"), @ApiResponse(code = 500, message = "Failure")})
+	@RequestMapping(method = RequestMethod.DELETE, path = "/bankingApp/v1/deleteAllEmployee")
+	public String deleteAllEmployeeDetails(@RequestHeader(value = "userId", required = true) String userId) {
+		return employeeService.deleteAllEmployeeDetails();
+	}
+	
+	@ApiOperation(value = "Delete Employee Details By EmployeeId", nickname = "DeleteByEmpId")
+	@ApiResponses(value = { @ApiResponse(code = 200, message = "Success", response = String.class),
+	                        @ApiResponse(code = 401, message = "Unauthorized"), @ApiResponse(code = 403, message = "Forbidden"),
+	                        @ApiResponse(code = 404, message = "Not Found"), @ApiResponse(code = 500, message = "Failure")})
+	@RequestMapping(method = RequestMethod.DELETE, path = "/bankingApp/v1/deleteByEmployeeId")
+	public String deleteEmployeeByEmployeeId(@PathVariable String employeeId,
 			@RequestHeader(value = "userId", required = true) String userId) {
-		return customerService.deleteCustomerByCustomerId(customerId);
+		return employeeService.deleteEmployeeByEmployeeId(employeeId);
 	}
 }
