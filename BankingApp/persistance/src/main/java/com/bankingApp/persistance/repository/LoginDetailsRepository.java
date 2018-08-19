@@ -14,6 +14,6 @@ import com.bankingApp.persistance.domain.LoginDetails;
  */
 
 @Repository
-public interface LoginDetailsRepository extends JpaRepository<LoginDetails, Long>{
+public interface LoginDetailsRepository extends JpaRepository<LoginDetails, String>{
 
 }

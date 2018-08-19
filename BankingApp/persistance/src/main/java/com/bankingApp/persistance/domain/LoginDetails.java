@@ -9,6 +9,8 @@ import java.sql.Timestamp;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EntityListeners;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
@@ -21,18 +23,23 @@ import lombok.Data;
 @EntityListeners(AuditingEntityListener.class)
 @Entity(name = "login_details")
 @Data
-public class LoginDetails extends Auditable implements Serializable{
-	
-    /**
+public class LoginDetails extends Auditable implements Serializable {
+
+	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 6422622596952725180L;
 	
-	@Column(name = "login_time")
-	private Timestamp loginTime;
+	@Id
+	@GeneratedValue
+	@Column(name = "id")
+	private String id;
 	
-	@Column(name = "user_id")
-    private String userId;
+	@Column(name = "login_time", nullable = false)
+	private Timestamp loginTime;
+
+	@Column(name = "user_id", nullable = false)
+	private String userId;
 
 	/**
 	 * @return the loginTime
@@ -42,7 +49,8 @@ public class LoginDetails extends Auditable implements Serializable{
 	}
 
 	/**
-	 * @param loginTime the loginTime to set
+	 * @param loginTime
+	 *            the loginTime to set
 	 */
 	public void setLoginTime(Timestamp loginTime) {
 		this.loginTime = loginTime;
@@ -56,10 +64,11 @@ public class LoginDetails extends Auditable implements Serializable{
 	}
 
 	/**
-	 * @param userId the userId to set
+	 * @param userId
+	 *            the userId to set
 	 */
 	public void setUserId(String userId) {
 		this.userId = userId;
-	}	
+	}
 
 }

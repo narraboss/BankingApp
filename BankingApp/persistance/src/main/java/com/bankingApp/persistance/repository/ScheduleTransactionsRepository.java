@@ -14,6 +14,6 @@ import com.bankingApp.persistance.domain.SchedualTransactions;
  */
 
 @Repository
-public interface ScheduleTransactionsRepository extends JpaRepository<SchedualTransactions, Long>{
+public interface ScheduleTransactionsRepository extends JpaRepository<SchedualTransactions, String>{
 
 }

@@ -28,7 +28,7 @@ public class SchedualTransactions extends Transactions implements  Serializable{
 private static final long serialVersionUID = -2910438717068012897L;
 	
 	
-	@Column(name = "schedule_time")
+	@Column(name = "schedule_time", nullable = false)
 	private Date scheduleTime;
 	
 	/**

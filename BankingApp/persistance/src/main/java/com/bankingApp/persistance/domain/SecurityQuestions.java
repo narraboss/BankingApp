@@ -8,6 +8,8 @@ import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EntityListeners;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
@@ -20,59 +22,74 @@ import lombok.Data;
 @EntityListeners(AuditingEntityListener.class)
 @Entity(name = "security_questions")
 @Data
-public class SecurityQuestions extends Auditable implements Serializable{
-	
+public class SecurityQuestions extends Auditable implements Serializable {
+
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 3914566707150020428L;
 	
-	@Column(name = "question")
+	@Id
+	@GeneratedValue
+	@Column(name = "id")
+	private String id;
+	@Column(name = "question", nullable = false)
 	private String sQuestion;
-	
-	@Column(name = "answer")
+
+	@Column(name = "answer", nullable = false)
 	private String sAnswer;
-	
-	@Column(name = "user_id")
+
+	@Column(name = "user_id", nullable = false)
 	private String userId;
-	
+
 	/**
 	 * @return the sQuestion
 	 */
 	public String getsQuestion() {
 		return sQuestion;
 	}
+
 	/**
-	 * @param sQuestion the sQuestion to set
+	 * @param sQuestion
+	 *            the sQuestion to set
 	 */
 	public void setsQuestion(String sQuestion) {
 		this.sQuestion = sQuestion;
 	}
+
 	/**
 	 * @return the sAnswer
 	 */
 	public String getsAnswer() {
 		return sAnswer;
 	}
+
 	/**
-	 * @param sAnswer the sAnswer to set
+	 * @param sAnswer
+	 *            the sAnswer to set
 	 */
 	public void setsAnswer(String sAnswer) {
 		this.sAnswer = sAnswer;
 	}
+
 	/**
 	 * @return the userId
 	 */
 	public String getUserId() {
 		return userId;
 	}
+
 	/**
-	 * @param userId the userId to set
+	 * @param userId
+	 *            the userId to set
 	 */
 	public void setUserId(String userId) {
 		this.userId = userId;
 	}
-	/* (non-Javadoc)
+
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.lang.Object#toString()
 	 */
 	@Override
