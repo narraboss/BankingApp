@@ -8,6 +8,7 @@ import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EntityListeners;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
@@ -28,21 +29,22 @@ public class Employee extends Auditable implements Serializable{
 	 */
 	private static final long serialVersionUID = -601361143026566630L;
 	@Id
-	@Column(name = "employee_Id")
+	@GeneratedValue
+	@Column(name = "employee_Id", nullable = false)
 	private String employeeId;
 	
 	private String userId;
 	
-	@Column(name = "first_name")
+	@Column(name = "first_name", nullable = false)
 	private String firstName;
 
-	@Column(name = "last_name")
+	@Column(name = "last_name", nullable = false)
 	private String lastName;
 	
-	@Column(name = "ssn")
+	@Column(name = "ssn", nullable = false)
 	private long ssn;
 
-	@Column(name = "mobilr_num")
+	@Column(name = "mobilr_num", nullable = false)
 	private long mobNum;
 	
 	/**

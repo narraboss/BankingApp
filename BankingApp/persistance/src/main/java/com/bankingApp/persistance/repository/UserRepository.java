@@ -14,6 +14,6 @@ import com.bankingApp.persistance.domain.User;
  */
 
 @Repository
-public interface UserRepository extends JpaRepository<User, Long>{
+public interface UserRepository extends JpaRepository<User, String>{
 
 }
