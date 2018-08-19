@@ -20,7 +20,7 @@ import lombok.Data;
  *
  */
 @EntityListeners(AuditingEntityListener.class)
-@Entity(name = "employee_details1")
+@Entity(name = "employee_details")
 @Data
 public class Employee extends Auditable implements Serializable{
 	
