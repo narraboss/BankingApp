@@ -7,7 +7,6 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.bankingApp.employee.service.IEmployeeService;
 import com.bankingApp.persistance.domain.Employee;
 import com.bankingApp.persistance.repository.EmployeeRepository;
 
