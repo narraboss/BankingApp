@@ -13,6 +13,6 @@ import com.bankingApp.persistance.domain.Address;
  *
  */
 @Repository
-public interface AddressRepository extends JpaRepository<Address, Long>{
+public interface AddressRepository extends JpaRepository<Address, String>{
 
 }

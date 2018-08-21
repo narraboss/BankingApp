@@ -13,7 +13,7 @@ import com.bankingApp.persistance.domain.Customer;
  *
  */
 @Repository
-public interface CustomerRepository extends JpaRepository<Customer, Long> {
+public interface CustomerRepository extends JpaRepository<Customer, String> {
 	
 	public Customer findByCustomerId(String customerId);
 	

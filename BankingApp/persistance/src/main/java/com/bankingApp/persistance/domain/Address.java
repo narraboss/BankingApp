@@ -8,6 +8,10 @@ import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EntityListeners;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
@@ -29,27 +33,34 @@ public class Address extends Auditable implements Serializable {
 	 */
 	private static final long serialVersionUID = 5191001425670396020L;
 	
-	@Column(name = "building_num")
+	@Id
+	@GeneratedValue
+	@Column(name = "id")
+	private String id;
+	
+	@Column(name = "building_num", nullable = false)
 	private String buildingNum;
 	
-	@Column(name = "street")
+	@Column(name = "street", nullable = false)
 	private String street;
 	
-	@Column(name = "city")
+	@Column(name = "city", nullable = false)
 	private String city;
 	
-	@Column(name = "state")
+	@Column(name = "state", nullable = false)
 	private String state;
 	
-	@Column(name = "country")
+	@Column(name = "country", nullable = false)
 	private String Country;
 	
-	@Column(name = "zipcode", nullable = false)
+	@Column(name = "zipcode", nullable = false, length = 5)
 	private String zipCode; //todo restrict to 5 digits
 	
-	@Column(name = "address_type")
+	@Enumerated(EnumType.STRING)
+	@Column(name = "address_type", nullable = false)
 	private AddressType addressType;
 	
+	@Column(name = "user_id", nullable = false)
 	private String userId;
 	
 	/**
