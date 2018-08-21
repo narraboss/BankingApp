@@ -8,9 +8,13 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.bankingApp.customer.service.ICustomerService;
 import com.bankingApp.persistance.domain.Customer;
 import com.bankingApp.persistance.repository.CustomerRepository;
+import com.bankingApp.persistance.service.ICustomerService;
+
+
+
+
 
 /**
  * @author vijayendrakantipudi

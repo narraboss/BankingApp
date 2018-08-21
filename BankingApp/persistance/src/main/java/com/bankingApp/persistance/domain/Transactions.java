@@ -8,6 +8,10 @@ import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EntityListeners;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
@@ -29,19 +33,25 @@ public class Transactions extends Auditable implements Serializable{
 	 */
 	private static final long serialVersionUID = 6609815263954499654L;
 	
-	@Column(name = "from_accnt")
+	@Id
+	@GeneratedValue
+	@Column(name = "id")
+	private String id;
+	
+	@Column(name = "from_accnt",nullable = false)
 	private String frmAccount;
 	
-	@Column(name = "to_accnt")
+	@Column(name = "to_accnt", nullable = false)
 	private String toAccount;
 	
-	@Column(name = "amount")
+	@Column(name = "amount",nullable = false)
 	private double amount; //todo restrict to 2 decimal points
 	
-	@Column(name = "transaction_type")
+	@Enumerated(EnumType.STRING)
+	@Column(name = "transaction_type",nullable = false)
 	private TransactionType transactionType;
 	
-	@Column(name = "user_id")
+	@Column(name = "user_id",nullable = false)
 	private String userId;
 	
 	/**

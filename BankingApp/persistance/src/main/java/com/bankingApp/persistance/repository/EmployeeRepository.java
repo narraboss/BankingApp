@@ -14,7 +14,7 @@ import com.bankingApp.persistance.domain.Employee;
  */
 
 @Repository
-public interface EmployeeRepository extends JpaRepository<Employee, Long> {
+public interface EmployeeRepository extends JpaRepository<Employee, String> {
 
 	Employee findByEmployeeId(String employeeId);
 

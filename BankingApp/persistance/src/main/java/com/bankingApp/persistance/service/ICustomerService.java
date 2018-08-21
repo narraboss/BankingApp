@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.bankingApp.customer.service;
+package com.bankingApp.persistance.service;
 
 import java.util.List;
 

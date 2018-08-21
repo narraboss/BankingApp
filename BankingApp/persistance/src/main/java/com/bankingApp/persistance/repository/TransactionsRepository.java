@@ -13,6 +13,6 @@ import com.bankingApp.persistance.domain.Transactions;
  *
  */
 @Repository
-public interface TransactionsRepository extends JpaRepository<Transactions, Long>{
+public interface TransactionsRepository extends JpaRepository<Transactions, String>{
 
 }

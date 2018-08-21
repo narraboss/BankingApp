@@ -13,6 +13,6 @@ import com.bankingApp.persistance.domain.Beneficiary;
  *
  */
 @Repository
-public interface BeneficiaryRepository extends JpaRepository<Beneficiary, Long>{
+public interface BeneficiaryRepository extends JpaRepository<Beneficiary, String>{
 
 }
