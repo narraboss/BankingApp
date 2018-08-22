@@ -8,7 +8,7 @@ package com.bankingApp.persistance.domain.constants;
  *
  */
 public enum Role {
-	
-	Employee,Customer,Admin;
+
+	Employee, Customer, Admin;
 
 }

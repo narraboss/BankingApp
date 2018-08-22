@@ -15,5 +15,5 @@ import com.bankingApp.persistance.domain.User;
 
 @Repository
 public interface UserRepository extends JpaRepository<User, String>{
-
+	 User findByemail(String email);
 }

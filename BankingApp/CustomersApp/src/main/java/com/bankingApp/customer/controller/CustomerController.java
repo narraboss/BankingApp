@@ -29,7 +29,7 @@ import com.wordnik.swagger.annotations.ApiResponses;
  */
 
 @RestController
-@RequestMapping("/customerDetails")
+//@RequestMapping("/customerDetails")
 @Api(value = "customerController", description = "cntroller to save and get customer details")
 public class CustomerController {
 	

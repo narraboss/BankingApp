@@ -12,6 +12,7 @@ import javax.persistence.EntityListeners;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
@@ -36,7 +37,7 @@ public class User extends Auditable implements Serializable {
 	private static final long serialVersionUID = -724691016780820533L;
 
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "user_id")
 	private String userId;
 
@@ -45,6 +46,9 @@ public class User extends Auditable implements Serializable {
 
 	@Column(name = "user_info")
 	private UserInfo userInfo;
+
+	@Column(name = "email")
+	private String email;
 
 	@Column(name = "password")
 	private String password;
@@ -113,8 +117,6 @@ public class User extends Auditable implements Serializable {
 		this.password = password;
 	}
 
-
-
 	/**
 	 * @return the securityQuestions
 	 */
@@ -151,5 +153,13 @@ public class User extends Auditable implements Serializable {
 
 	public void setRole(Role role) {
 		this.role = role;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
 }

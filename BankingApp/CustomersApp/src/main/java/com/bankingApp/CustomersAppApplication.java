@@ -6,8 +6,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
-import static springfox.documentation.builders.PathSelectors.regex;
 import springfox.documentation.builders.ApiInfoBuilder;
+import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.service.ApiInfo;
 import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
@@ -22,15 +22,14 @@ public class CustomersAppApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(CustomersAppApplication.class, args);
 	}
-	
+
 	private ApiInfo apiInfo() {
-		return new ApiInfoBuilder().title("").description("")
-				.version("1.0").build();
+		return new ApiInfoBuilder().title("").description("").version("1.0").build();
 	}
 
 	@Bean
 	public Docket aclApi() {
-		return new Docket(DocumentationType.SWAGGER_2).groupName("").apiInfo(apiInfo()).select()
-				.paths(regex("")).build();
+		return new Docket(DocumentationType.SWAGGER_2).
+				apiInfo(apiInfo()).select().paths(PathSelectors.any()).build();
 	}
 }

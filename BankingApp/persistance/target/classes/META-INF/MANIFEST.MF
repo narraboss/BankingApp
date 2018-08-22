@@ -1,9 +1,9 @@
 Manifest-Version: 1.0
 Implementation-Title: persistance
 Implementation-Version: 0.0.1-SNAPSHOT
-Built-By: vijayendrakantipudi
+Built-By: basanth
 Implementation-Vendor-Id: com.bankingApp
-Build-Jdk: 1.8.0_171
+Build-Jdk: 1.8.0_141
 Implementation-URL: http://maven.apache.org
 Created-By: Maven Integration for Eclipse
 
