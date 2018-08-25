@@ -5,20 +5,23 @@ package com.bankingApp.persistance.domain;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EntityListeners;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.OneToMany;
 
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
-
-import com.bankingApp.persistance.domain.constants.Role;
 
 import lombok.Data;
 
@@ -54,22 +57,23 @@ public class User extends Auditable implements Serializable {
 	private String password;
 
 	@Enumerated(EnumType.STRING)
-	@Column(name = "role")
-	private Role role;
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
+	private Set<Role> roles;
 
 	@OneToMany(mappedBy = "id")
 	@Column(name = "security_questions")
 	private List<SecurityQuestions> securityQuestions;
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see java.lang.Object#toString()
-	 */
-	@Override
-	public String toString() {
-		return "User [userId=" + userId + ", userName=" + userName + ", userInfo=" + userInfo + ", password=" + password
-				+ ", role=" + role + ", securityQuestions=" + securityQuestions + "]";
+	public User(User user) {
+		super();
+		this.userId = user.getUserId();
+		this.userName = user.getUserName();
+		this.userInfo = user.getUserInfo();
+		this.email = user.getEmail();
+		this.password = user.getPassword();
+		this.roles = user.getRoles();
+		this.securityQuestions = user.getSecurityQuestions();
 	}
 
 	/**
@@ -147,14 +151,6 @@ public class User extends Auditable implements Serializable {
 		this.userInfo = userInfo;
 	}
 
-	public Role getRole() {
-		return role;
-	}
-
-	public void setRole(Role role) {
-		this.role = role;
-	}
-
 	public String getEmail() {
 		return email;
 	}
@@ -162,4 +158,13 @@ public class User extends Auditable implements Serializable {
 	public void setEmail(String email) {
 		this.email = email;
 	}
+
+	public Set<Role> getRoles() {
+		return roles;
+	}
+
+	public void setRoles(Set<Role> roles) {
+		this.roles = roles;
+	}
+
 }

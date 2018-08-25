@@ -5,12 +5,16 @@ package com.bankingApp.persistance.domain;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EntityListeners;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
@@ -23,8 +27,8 @@ import lombok.Data;
 @EntityListeners(AuditingEntityListener.class)
 @Entity(name = "employee_details")
 @Data
-public class Employee extends Auditable implements Serializable{
-	
+public class Employee extends Auditable implements Serializable {
+
 	/**
 	 * 
 	 */
@@ -33,21 +37,31 @@ public class Employee extends Auditable implements Serializable{
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "employee_Id", nullable = false)
 	private String employeeId;
-	
-	private String userId;
-	
+
 	@Column(name = "first_name", nullable = false)
 	private String firstName;
 
 	@Column(name = "last_name", nullable = false)
 	private String lastName;
-	
+
 	@Column(name = "ssn", nullable = false)
 	private long ssn;
 
 	@Column(name = "mobilr_num", nullable = false)
 	private long mobNum;
-	
+
+	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@JoinColumn(name = "user_id")
+	private User user;
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
 	/**
 	 * @return the employeeId
 	 */
@@ -56,7 +70,8 @@ public class Employee extends Auditable implements Serializable{
 	}
 
 	/**
-	 * @param employeeId the employeeId to set
+	 * @param employeeId
+	 *            the employeeId to set
 	 */
 	public void setEmployeeId(String employeeId) {
 		this.employeeId = employeeId;
@@ -70,7 +85,8 @@ public class Employee extends Auditable implements Serializable{
 	}
 
 	/**
-	 * @param firstName the firstName to set
+	 * @param firstName
+	 *            the firstName to set
 	 */
 	public void setFirstName(String firstName) {
 		this.firstName = firstName;
@@ -84,7 +100,8 @@ public class Employee extends Auditable implements Serializable{
 	}
 
 	/**
-	 * @param lastName the lastName to set
+	 * @param lastName
+	 *            the lastName to set
 	 */
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
@@ -98,7 +115,8 @@ public class Employee extends Auditable implements Serializable{
 	}
 
 	/**
-	 * @param ssn the ssn to set
+	 * @param ssn
+	 *            the ssn to set
 	 */
 	public void setSsn(long ssn) {
 		this.ssn = ssn;
@@ -112,23 +130,11 @@ public class Employee extends Auditable implements Serializable{
 	}
 
 	/**
-	 * @param mobNum the mobNum to set
+	 * @param mobNum
+	 *            the mobNum to set
 	 */
 	public void setMobNum(long mobNum) {
 		this.mobNum = mobNum;
 	}
 
-	/**
-	 * @return the userId
-	 */
-	public String getUserId() {
-		return userId;
-	}
-
-	/**
-	 * @param userId the userId to set
-	 */
-	public void setUserId(String userId) {
-		this.userId = userId;
-	}
 }
