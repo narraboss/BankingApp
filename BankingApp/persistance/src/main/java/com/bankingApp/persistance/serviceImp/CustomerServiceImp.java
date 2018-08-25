@@ -6,6 +6,7 @@ package com.bankingApp.persistance.serviceImp;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import com.bankingApp.persistance.domain.Customer;
@@ -25,6 +26,7 @@ import com.bankingApp.persistance.service.ICustomerService;
 public class CustomerServiceImp implements ICustomerService{
 	
 	@Autowired
+	@Qualifier("customerRepository")
 	CustomerRepository customerRepository;
 
 	@Override
