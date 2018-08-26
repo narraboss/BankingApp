@@ -27,7 +27,7 @@ public class CustomersAppApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(CustomersAppApplication.class, args);
-	}
+	}	
 
 	private ApiInfo apiInfo() {
 		return new ApiInfoBuilder().title("").description("").version("1.0").build();
