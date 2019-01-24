@@ -5,11 +5,16 @@ package com.bankingApp.persistance.domain;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EntityListeners;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
@@ -30,7 +35,7 @@ public class Beneficiary extends Auditable implements Serializable {
 	private static final long serialVersionUID = -8471731696814812388L;
 
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "id")
 	private String id;
 
@@ -43,8 +48,39 @@ public class Beneficiary extends Auditable implements Serializable {
 	@Column(name = "acc_hldr_mail", nullable = false)
 	private String accHldrMail;
 
-	@Column(name = "user_id", nullable = false)
-	private String userId;
+	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@JoinColumn(name = "user_id")
+	private User user;
+
+	/**
+	 * @return the id
+	 */
+	public String getId() {
+		return id;
+	}
+
+	/**
+	 * @return the user
+	 */
+	public User getUser() {
+		return user;
+	}
+
+	/**
+	 * @param id
+	 *            the id to set
+	 */
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	/**
+	 * @param user
+	 *            the user to set
+	 */
+	public void setUser(User user) {
+		this.user = user;
+	}
 
 	/**
 	 * @return the accHldrName
@@ -89,32 +125,6 @@ public class Beneficiary extends Auditable implements Serializable {
 	 */
 	public void setAccHldrMail(String accHldrMail) {
 		this.accHldrMail = accHldrMail;
-	}
-
-	/**
-	 * @return the userId
-	 */
-	public String getUserId() {
-		return userId;
-	}
-
-	/**
-	 * @param userId
-	 *            the userId to set
-	 */
-	public void setUserId(String userId) {
-		this.userId = userId;
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see java.lang.Object#toString()
-	 */
-	@Override
-	public String toString() {
-		return "Beneficiary [accHldrName=" + accHldrName + ", accHldrMobNum=" + accHldrMobNum + ", accHldrMail="
-				+ accHldrMail + ", userId=" + userId + "]";
 	}
 
 }

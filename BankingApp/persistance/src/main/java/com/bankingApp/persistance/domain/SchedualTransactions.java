@@ -3,9 +3,7 @@
  */
 package com.bankingApp.persistance.domain;
 
-import java.io.Serializable;
 import java.sql.Date;
-import java.sql.Time;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -22,15 +20,13 @@ import lombok.Data;
 @EntityListeners(AuditingEntityListener.class)
 @Entity(name = "schedule_transactions")
 @Data
-public class SchedualTransactions extends Transactions implements  Serializable{
-	
-	
-private static final long serialVersionUID = -2910438717068012897L;
-	
-	
+public class SchedualTransactions extends Transaction {
+
+	private static final long serialVersionUID = -2910438717068012897L;
+
 	@Column(name = "schedule_time", nullable = false)
 	private Date scheduleTime;
-	
+
 	/**
 	 * @return the scheduleTime
 	 */
@@ -39,18 +35,12 @@ private static final long serialVersionUID = -2910438717068012897L;
 	}
 
 	/**
-	 * @param scheduleTime the scheduleTime to set
+	 * @param scheduleTime
+	 *            the scheduleTime to set
 	 */
 	public void setScheduleTime(Date scheduleTime) {
 		this.scheduleTime = scheduleTime;
 	}
 
-	/* (non-Javadoc)
-	 * @see java.lang.Object#toString()
-	 */
-	@Override
-	public String toString() {
-		return "SchedualTransactions [scheduleTime=" + scheduleTime + "]";
-	}
 
 }

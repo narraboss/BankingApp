@@ -7,9 +7,6 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
-import javax.persistence.EntityListeners;
-
-import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import lombok.Data;
 
@@ -17,14 +14,11 @@ import lombok.Data;
  * @author vijayendrakantipudi
  *
  */
-@EntityListeners(AuditingEntityListener.class)
+
 @Data
 @Embeddable
-public class UserInfo  implements Serializable {
+public class UserInfo implements Serializable {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = -1133947250911941187L;
 
 	@Column(name = "first_name")
@@ -115,17 +109,6 @@ public class UserInfo  implements Serializable {
 	 */
 	public void setMail(String mail) {
 		this.mail = mail;
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see java.lang.Object#toString()
-	 */
-	@Override
-	public String toString() {
-		return "UserInfo [fName=" + fName + ", lName=" + lName + ", userAddress=" + userAddress + ", mobileNum="
-				+ mobileNum + ", mail=" + mail + "]";
 	}
 
 }

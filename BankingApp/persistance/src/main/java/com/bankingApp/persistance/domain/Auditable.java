@@ -18,31 +18,32 @@ import org.springframework.data.annotation.LastModifiedDate;
 
 /**
  * Audit class.
+ * 
  * @author vijayendrakantipudi
  *
  */
 
 @MappedSuperclass
-public class Auditable {
-	
+public class Auditable extends BaseModel {
+
 	@CreatedBy
-	@Column(name = "created_by", insertable = true,  updatable = false)
+	@Column(name = "created_by", insertable = true, updatable = false)
 	protected String createdBy;
-	
+
 	@CreatedDate
 	@Temporal(TIMESTAMP)
 	@Column(name = "created_date", insertable = true, updatable = false)
 	protected Date createdDate;
-	
+
 	@LastModifiedBy
 	@Column(name = "modified_by", insertable = true, updatable = false)
 	protected String lastModifiedBy;
-	
+
 	@LastModifiedDate
 	@Temporal(TIMESTAMP)
 	@Column(name = "modified_date", insertable = true, updatable = false)
 	protected Date lastModifiedDate;
-	
+
 	/**
 	 * @return the createdBy
 	 */
@@ -51,7 +52,8 @@ public class Auditable {
 	}
 
 	/**
-	 * @param createdBy the createdBy to set
+	 * @param createdBy
+	 *            the createdBy to set
 	 */
 	public void setCreatedBy(String createdBy) {
 		this.createdBy = createdBy;
@@ -65,7 +67,8 @@ public class Auditable {
 	}
 
 	/**
-	 * @param createdDate the createdDate to set
+	 * @param createdDate
+	 *            the createdDate to set
 	 */
 	public void setCreatedDate(Date createdDate) {
 		this.createdDate = createdDate;
@@ -79,7 +82,8 @@ public class Auditable {
 	}
 
 	/**
-	 * @param lastModifiedBy the lastModifiedBy to set
+	 * @param lastModifiedBy
+	 *            the lastModifiedBy to set
 	 */
 	public void setLastModifiedBy(String lastModifiedBy) {
 		this.lastModifiedBy = lastModifiedBy;
@@ -93,20 +97,11 @@ public class Auditable {
 	}
 
 	/**
-	 * @param lastModifiedDate the lastModifiedDate to set
+	 * @param lastModifiedDate
+	 *            the lastModifiedDate to set
 	 */
 	public void setLastModifiedDate(Date lastModifiedDate) {
 		this.lastModifiedDate = lastModifiedDate;
 	}
-	
-	/* (non-Javadoc)
-	 * @see java.lang.Object#toString()
-	 */
-	@Override
-	public String toString() {
-		return "Auditable [createdBy=" + createdBy + ", createdDate=" + createdDate + ", lastModifiedBy="
-				+ lastModifiedBy + ", lastModifiedDate=" + lastModifiedDate + "]";
-	}
 
 }
-
